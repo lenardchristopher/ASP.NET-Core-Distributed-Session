@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  app1:
+    image: ${DOCKER_REGISTRY}app1
+    build:
+      context: .
+      dockerfile: App1/Dockerfile
+    depends_on:
+      - redis
+
+  app2:
+    image: ${DOCKER_REGISTRY}app2
+    build:
+      context: .
+      dockerfile: App2/Dockerfile
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
